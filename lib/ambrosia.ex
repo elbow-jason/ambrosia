@@ -1,0 +1,2 @@
+defmodule Ambrosia do
+end
