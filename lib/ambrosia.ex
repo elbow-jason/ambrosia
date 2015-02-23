@@ -1,5 +1,4 @@
 defmodule Ambrosia do
- 
 
   def start do
     started = :mnesia.start()

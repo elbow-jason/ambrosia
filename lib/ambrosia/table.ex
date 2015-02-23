@@ -41,7 +41,13 @@ defmodule Ambrosia.Table do
     :mnesia.del_table_copy(table, node)
   end
 
-  def create(name), do: create(name, [:type, :set])
+  @doc """
+  create/1 creates a default RAM-stored table.
+  create/2 allows for some pretty wild (at least if you're used to
+  Postgres or Mongo) configuration options.
+  See examples in 3.4 http://www.erlang.org/doc/apps/mnesia/Mnesia_chap3.html
+  """
+  def create(name), do: create(name, [])
   def create(name, args) do
     created = :mnesia.create_table(name, args)
     case created do
