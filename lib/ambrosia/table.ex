@@ -41,4 +41,14 @@ defmodule Ambrosia.Table do
     :mnesia.del_table_copy(table, node)
   end
 
+  def create(name), do: create(name, [:type, :set])
+  def create(name, args) do
+    created = :mnesia.create_table(name, args)
+    case created do
+      {:atomic, :ok} ->
+        IO.puts("Table '#{Atom.to_string(name)}' created successfully.")
+      {:aborted, reason} ->
+        IO.puts("Table '#{Atom.to_string(name)}' aborted: #{inspect reason}")
+    end
+  end
 end
