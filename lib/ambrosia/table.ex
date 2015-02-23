@@ -16,11 +16,29 @@ defmodule Ambrosia.Table do
   def copy(table, origin, destination) do
     :mnesia.move_table_copy(table, origin, destination)
   end
-  def copy(table, destination), do: copy(table, Node.self(), destination)
 
-  def copy_to_remote(table, destination, typed \\ :ram_copies) do
-    :mnesia.add_table_copy(table, destination, typed)
+  @doc """
+  Copies table to local node from remote node (origin).
+  """
+  def copy_to_local(table, origin), do: copy(table, origin,  Node.self)
+
+  @doc """
+  Copies table from local node to remote node (destination).
+  """
+  def copy_to_remote(table, destination) do
+    copy(table, Node.self, destination)
   end
 
+  @doc """
+  Adds a copy of a table to a new node. A node that is passed the ```schema```
+  table will become part of this Mnesia system.
+  """
+  def init_copy(table, destination, storage_type \\ :ram_copies) do
+    :mnesia.add_table_copy(table, destination, storage_type)
+  end
+
+  def delete_copy(table, node) do
+    :mnesia.del_table_copy(table, node)
+  end
 
 end
