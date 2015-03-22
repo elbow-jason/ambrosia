@@ -52,9 +52,9 @@ defmodule Ambrosia.Table do
     created = :mnesia.create_table(name, args)
     case created do
       {:atomic, :ok} ->
-        IO.puts("Table '#{Atom.to_string(name)}' created successfully.")
+        IO.puts("Table '#{inspect name}' created successfully.")
       {:aborted, reason} ->
-        IO.puts("Table '#{Atom.to_string(name)}' aborted: #{inspect reason}")
+        IO.puts("Table '#{inspect name}' aborted: #{inspect reason}")
     end
   end
 end

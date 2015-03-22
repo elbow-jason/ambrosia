@@ -9,12 +9,15 @@ defmodule Ambrosia do
     started
   end
 
-  def init(_tables) do
+  def init(tables) do
     Ambrosia.Schema.create
-    # Ambrosia.Schema.wait_for_tables(tables)
+    Ambrosia.Schema.wait_for_tables(tables)
     start()
   end
 
+  def info do
+    :mnesia.info
+  end
 end
 
 Ambrosia.init([])

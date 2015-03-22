@@ -42,4 +42,9 @@ defmodule Ambrosia.Schema do
   def delete(nodes) when nodes |> is_list, do: :mnesia.delete_schema(nodes)
   def delete(node) when node |> is_atom, do: delete [node]
   def delete, do: delete Node.self()
+
+  def print(table), do: :mnesia.schema(table)
+  def print, do: :mnesia.schema
+
+
 end
