@@ -16,12 +16,16 @@ on failure returns ```{:aborted {:reason, info}}```
 
 ```arglist``` is a keyword list
 
-#####atoms for arglist {atom, value}
+#####atoms for arglist ```{atom, value}```
 
-|atom    | values                           | default | description                    |
-|--------|----------------------------------|---------|--------------------------------|
-|```:type```| ```:set```, ```:ordered_set```, ```:bag```  | ```:set```    | sets the behavior of the table
+|  ```atom```             | ```value```                                 | default                         | description                           |
+|------------------------ |-------------------------------------------- |-------------------------------- |-------------------------------------- |
+|```:type```              | ```:set```, ```:ordered_set```, ```:bag```  | ```:set```                      | sets the behavior of the table        |
+|```:disc_copies```       | NodeList                                    | Should be ```[Node.self]```     | sets where disk copies should exist   |
+|```:ram_copies```        | NodeList                                    | Should be ```[Node.self]```     | sets where ram copies should exist    |
+|```:disc_only_copies```  | NodeList                                    | Should be ```[Node.self]```     | sets where ram copies should exist    |
+|```:index```             | AttributeNameList                           | include atoms that need indexed | sets which attributes with be indexed |
 
 
-
+Note: NodeList is a list of nodes:
 Note: currently 'ordered_set' is not supported for 'disc_only_copies' tables. A table of type set or ordered_set has either zero or one record per key. Whereas a table of type bag can have an arbitrary number of records per key. The key for each record is always the first attribute of the record.
