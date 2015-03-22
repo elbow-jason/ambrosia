@@ -6,17 +6,21 @@
 
 #### Table Creation (create_table)
 
-on success returns :ok
-on failure returns {:aborted {:reason, info}}
+on success returns ```:ok```
 
-create_table(name, arg_list)
-name is an atom
-arglist is a key value list
+on failure returns ```{:aborted {:reason, info}}```
+
+```create_table(name, arg_list)```
+
+```name``` is an atom
+
+```arglist``` is a keyword list
+
 #####atoms for arglist {atom, value}
 
 |atom    | values                           | default | description                    |
 |--------|----------------------------------|---------|--------------------------------|
-|:type   | one of :set, :ordered_set, :bag  | :set    | sets the behavior of the table
+|:type   | ```:set```, ```:ordered_set```, ```:bag```  | ```:set```    | sets the behavior of the table
 
 
 
