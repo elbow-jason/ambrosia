@@ -20,7 +20,7 @@ on failure returns ```{:aborted {:reason, info}}```
 
 |atom    | values                           | default | description                    |
 |--------|----------------------------------|---------|--------------------------------|
-|:type   | ```:set```, ```:ordered_set```, ```:bag```  | ```:set```    | sets the behavior of the table
+|```:type```| ```:set```, ```:ordered_set```, ```:bag```  | ```:set```    | sets the behavior of the table
 
 
 
