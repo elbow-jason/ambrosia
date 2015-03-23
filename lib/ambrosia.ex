@@ -18,6 +18,7 @@ defmodule Ambrosia do
   def info do
     :mnesia.info
   end
+
 end
 
 Ambrosia.init([])
